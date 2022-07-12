@@ -1,0 +1,12 @@
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\bin\Debug\BigCupPayroll.DB.dll.config
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\bin\Debug\BigCupPayroll.DB.dll
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\bin\Debug\BigCupPayroll.DB.pdb
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\bin\Debug\EntityFramework.dll
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\bin\Debug\EntityFramework.xml
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\obj\Debug\BigCupPayroll.DB.csproj.AssemblyReference.cache
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\obj\Debug\BigCupPayroll.DB.csproj.CoreCompileInputs.cache
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\obj\Debug\BigCupPayroll.DB.csproj.CopyComplete
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\obj\Debug\BigCupPayroll.DB.dll
+C:\Users\rianm\Source\Workspaces\BigCup\BigCupPayroll\BigCupPayroll.DB\obj\Debug\BigCupPayroll.DB.pdb

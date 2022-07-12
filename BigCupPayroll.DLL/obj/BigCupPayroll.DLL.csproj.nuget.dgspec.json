@@ -1,0 +1,92 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\rianm\\Source\\Workspaces\\BigCup\\BigCupPayroll\\BigCupPayroll.DLL\\BigCupPayroll.DLL.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\rianm\\Source\\Workspaces\\BigCup\\BigCupPayroll\\BigCupPayroll.DLL\\BigCupPayroll.DLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\rianm\\Source\\Workspaces\\BigCup\\BigCupPayroll\\BigCupPayroll.DLL\\BigCupPayroll.DLL.csproj",
+        "projectName": "BigCupPayroll.DLL",
+        "projectPath": "C:\\Users\\rianm\\Source\\Workspaces\\BigCup\\BigCupPayroll\\BigCupPayroll.DLL\\BigCupPayroll.DLL.csproj",
+        "packagesPath": "C:\\Users\\rianm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rianm\\Source\\Workspaces\\BigCup\\BigCupPayroll\\BigCupPayroll.DLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\rianm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "C:\\Users\\rianm\\Source\\Workspaces\\BigCup\\BigCupPayroll\\CommonLibrary\\CommonLibrary.csproj": {
+                "projectPath": "C:\\Users\\rianm\\Source\\Workspaces\\BigCup\\BigCupPayroll\\CommonLibrary\\CommonLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\rianm\\Source\\Workspaces\\BigCup\\BigCupPayroll\\CommonLibrary\\CommonLibrary.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\rianm\\Source\\Workspaces\\BigCup\\BigCupPayroll\\CommonLibrary\\CommonLibrary.csproj",
+        "projectName": "CommonLibrary",
+        "projectPath": "C:\\Users\\rianm\\Source\\Workspaces\\BigCup\\BigCupPayroll\\CommonLibrary\\CommonLibrary.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

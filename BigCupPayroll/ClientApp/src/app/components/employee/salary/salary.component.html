@@ -1,0 +1,25 @@
+<h6>{{salary.FirstName}} Basic Pay</h6>
+<ng-container *ngIf="isEdit;else notEditCarrier">
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="salary.BasicPay" name="BasicPay"
+             required>
+    </mat-form-field>
+  </ng-container>
+  <ng-template #notEditCarrier>
+    <ng-container>
+      {{salary.BasicPay}}
+    </ng-container>
+  </ng-template>
+
+<button mat-mini-fab [color]="isEdit ? 'primary' : 'accent'" (click)="editRow(salary)">
+    <ng-container *ngIf="isEdit;else notEditAction">
+      <mat-icon id="saveButton">save</mat-icon>
+    </ng-container>
+
+    <ng-template #notEditAction>
+      <ng-container>
+        <mat-icon id="editButton">edit</mat-icon>
+      </ng-container>
+    </ng-template>
+  </button>
+

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BigCupPayrollModelStoreContainer" CdmEntityContainer="BigCupPayrollEntities">
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Role)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="HiredDate" ColumnName="HiredDate" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salaries">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Salary)">
+        <MappingFragment StoreEntitySet="Salaries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BasicPay" ColumnName="BasicPay" />
+          <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendances">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Attendance)">
+        <MappingFragment StoreEntitySet="Attendances">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+          <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="WorkDate" ColumnName="WorkDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payrolls">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Payroll)">
+        <MappingFragment StoreEntitySet="Payrolls">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CutOffDate" ColumnName="CutOffDate" />
+          <ScalarProperty Name="GrossPay" ColumnName="GrossPay" />
+          <ScalarProperty Name="NetPay" ColumnName="NetPay" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Allowances">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Allowance)">
+        <MappingFragment StoreEntitySet="Allowances">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PayrollId" ColumnName="PayrollId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deductions">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Deduction)">
+        <MappingFragment StoreEntitySet="Deductions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PayrollId" ColumnName="PayrollId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Branch)">
+        <MappingFragment StoreEntitySet="Branches">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

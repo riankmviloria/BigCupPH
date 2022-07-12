@@ -1,0 +1,73 @@
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-j0aj{background-color:#F1C232;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+    .tg .tg-0xm4{background-color:#F1C232;border-color:inherit;text-align:left;vertical-align:bottom}
+    .tg .tg-blbh{background-color:#F1C232;border-color:inherit;font-weight:bold;text-align:center;vertical-align:middle}
+    .tg .tg-bn54{background-color:#FFF;border-color:inherit;font-weight:bold;text-align:left;vertical-align:bottom}
+    .tg .tg-pdeq{background-color:#FFF;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+    .tg .tg-t1h2{background-color:#F1C232;border-color:inherit;text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+    <thead>
+      <tr>
+        <th class="tg-0xm4" rowspan="4"><img src="https://scontent.fmnl8-2.fna.fbcdn.net/v/t39.30808-6/211288716_207696981235776_2053316830424743103_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeGU084wWYQgTjTjX4I_Oph781mOrNsUmLbzWY6s2xSYtkDhqnZJshfCBqmO6xP5BLNtyRX1pZvKLQ43-9mFvdV0&_nc_ohc=n5rg97R5oLYAX9adBs5&tn=4puA2EOyqINlgXmw&_nc_ht=scontent.fmnl8-2.fna&oh=00_AT8BC4Pkd0l5ssfl2kyaMEEOWfCLoikK6rTBc_GFnhHqgg&oe=61F98251" width="180" height="150"></th>
+        <th class="tg-blbh" colspan="4"><span style="font-weight:bold;background-color:#F1C232">BIG CUP PAYSLIP</span></th>
+      </tr>
+      <tr>
+        <th class="tg-bn54" colspan="2"><span style="font-weight:bold;background-color:#FFF">{{payroll.Employee}}</span></th>
+        <th class="tg-bn54" colspan="2"><span style="font-weight:bold;background-color:#FFF">Pay Period: {{formatDate(payroll.CutOffDate)}}</span></th>
+      </tr>
+      <tr>
+        <th class="tg-pdeq" colspan="2">Area Manager/ Barista</th>
+        <th class="tg-pdeq" colspan="2">Big Cup Masinloc</th>
+      </tr>
+      <tr>
+        <th class="tg-0xm4" colspan="4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-t1h2">Basic Pay per day</td>
+        <td class="tg-0xm4" colspan="4"><span style="background-color:#F1C232">{{payroll.BasicPay}}&nbsp;&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td class="tg-t1h2">Number of days present</td>
+        <td class="tg-0xm4" colspan="4"><span style="background-color:#F1C232">{{payroll.PresentDay}}&nbsp;&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td class="tg-0xm4"><span style="background-color:#F1C232">Total</span></td>
+        <td class="tg-0xm4" colspan="4"><span style="background-color:#F1C232">{{payroll.GrossPay}}&nbsp;&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td class="tg-0xm4" colspan="5"></td>
+      </tr>
+      <tr>
+        <td class="tg-t1h2">Additional Allowance</td>
+        <td class="tg-0xm4" colspan="4"><span style="background-color:#F1C232">0.00&nbsp;&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td class="tg-t1h2">Management Fee&nbsp;&nbsp;Masinloc</td>
+        <td class="tg-0xm4" colspan="4"><span style="background-color:#F1C232">0.00&nbsp;&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td class="tg-0xm4" colspan="5"></td>
+      </tr>
+      <tr>
+        <td class="tg-0xm4"><span style="background-color:#F1C232">Deductions:</span></td>
+        <td class="tg-0xm4" colspan="4"><span style="background-color:#F1C232">0.00&nbsp;&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td class="tg-0xm4" colspan="5" rowspan="2"></td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <td class="tg-j0aj">TOTAL NET PAY</td>
+        <td class="tg-0xm4" colspan="4"><span style="font-weight:bold;background-color:#F1C232">{{payroll.NetPay}}&nbsp;&nbsp;</span></td>
+      </tr>
+    </tbody>
+    </table>

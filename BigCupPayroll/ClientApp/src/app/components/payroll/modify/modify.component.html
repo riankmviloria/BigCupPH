@@ -1,0 +1,48 @@
+<h6>Salary Adjustment</h6>
+
+<br/>
+<p>Current Salary: {{modifyPayroll.NetPay}}</p>
+<p>Adjusted Salary: {{adjustedPay}}</p>
+
+
+<div class="container">
+  <div class="example-button-container">
+    <button pull-right (click)="addAdjustment()" mat-mini-fab color="primary" aria-label="Example icon button with a filter list icon">
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+</div>
+    <form [formGroup]="adjustmentForm" (ngSubmit)="onSubmit()">
+      <table class="table table-bordered" formArrayName="adjustments">
+        <!-- <tr>
+          <th colspan="2">Add Multiple Quantity:</th>
+          <th width="150px">
+            
+        </tr> -->
+        <tr *ngFor="let quantity of adjustments().controls; let i=index" [formGroupName]="i">
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Description</mat-label>
+                <input formControlName="Description" matInput>
+            </mat-form-field>
+              <!-- <input type="text" formControlName="desc" class="form-control"> -->
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Amount</mat-label>
+                <input formControlName="Amount" (change)="onAdjustmentChanged()" matInput>
+            </mat-form-field>
+          </td>
+          <td>
+            <div class="example-button-container">  
+            <button (click)="removeAdjustment(i)" mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
+                <mat-icon>delete</mat-icon>
+            </button>
+            </div> 
+          </td>
+        </tr>
+      </table>
+     
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <br/>
+  </div>

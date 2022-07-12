@@ -1,0 +1,47 @@
+<mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [(ngModel)]="cuttOffDate" (dateChange)="getCutOffDate(cuttOffDate)" [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+
+
+<br/>
+
+
+<mat-table *ngIf="table" [dataSource]="table" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="CheckAll">
+    <mat-header-cell *matHeaderCellDef> <mat-card><b>Check All</b></mat-card> </mat-header-cell>
+    <mat-cell *matCellDef="let row;let i=index">
+      <ng-container>
+        <button (click) = "checkAllCheckBox(row,i,checkAllIcon)" mat-mini-fab color="primary" style="float: right;"><mat-icon>{{checkAllIcon}}</mat-icon></button>
+      </ng-container>  
+    </mat-cell>
+  </ng-container>
+
+  <ng-container *ngFor="let columnName of columns;let i=index" [matColumnDef]="columnName">
+    <mat-header-cell class="headers" *matHeaderCellDef><mat-card><b>{{ columnName }}</b></mat-card></mat-header-cell>
+    <mat-cell *matCellDef="let row">
+        <ng-container *ngIf="row[i] != true && row[i] != false ; else notEdit">
+            {{ row[i]}}
+        </ng-container>
+        <ng-template #notEdit>
+            <ng-container>
+                <mat-checkbox (change)="row[i] = rowChanged(row,i,$event)" class="example-margin" [checked]="row[i]">
+                </mat-checkbox>
+            </ng-container>
+          </ng-template>
+    </mat-cell>
+  </ng-container>
+
+ 
+  
+  
+  <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
+  <mat-row *matRowDef="let row;let i=index; columns: columnNames"></mat-row>
+</mat-table>
+
+<br/>
+<button (click)="SaveAttendance()" mat-raised-button color="primary" style="float: right;">Update</button>

@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BigCupPayrollModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BigCupPayrollModelStoreContainer">
+    <EntitySet Name="Roles" EntityType="BigCupPayrollModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="BigCupPayrollModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Salaries" EntityType="BigCupPayrollModel.Store.Salaries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Attendances" EntityType="BigCupPayrollModel.Store.Attendances" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Payrolls" EntityType="BigCupPayrollModel.Store.Payrolls" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Allowances" EntityType="BigCupPayrollModel.Store.Allowances" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Deductions" EntityType="BigCupPayrollModel.Store.Deductions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Branches" EntityType="BigCupPayrollModel.Store.Branches" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_UserRole" Association="BigCupPayrollModel.Store.FK_UserRole">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserSalary" Association="BigCupPayrollModel.Store.UserSalary">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Salary" EntitySet="Salaries" />
+    </AssociationSet>
+    <AssociationSet Name="UserAttendance" Association="BigCupPayrollModel.Store.UserAttendance">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Attendance" EntitySet="Attendances" />
+    </AssociationSet>
+    <AssociationSet Name="PayrollAllowance" Association="BigCupPayrollModel.Store.PayrollAllowance">
+      <End Role="Payroll" EntitySet="Payrolls" />
+      <End Role="Allowance" EntitySet="Allowances" />
+    </AssociationSet>
+    <AssociationSet Name="PayrollDeduction" Association="BigCupPayrollModel.Store.PayrollDeduction">
+      <End Role="Payroll" EntitySet="Payrolls" />
+      <End Role="Deduction" EntitySet="Deductions" />
+    </AssociationSet>
+    <AssociationSet Name="UserPayroll" Association="BigCupPayrollModel.Store.UserPayroll">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Payroll" EntitySet="Payrolls" />
+    </AssociationSet>
+    <AssociationSet Name="BranchUser" Association="BigCupPayrollModel.Store.BranchUser">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HiredDate" Type="datetime" Nullable="true" />
+    <Property Name="BirthDate" Type="datetime" Nullable="true" />
+    <Property Name="Role_Id" Type="int" Nullable="false" />
+    <Property Name="Position" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BranchId" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Salaries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BasicPay" Type="decimal" Nullable="false" />
+    <Property Name="EffectiveDate" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Attendances">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeIn" Type="datetime" Nullable="false" />
+    <Property Name="TimeOut" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WorkDate" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payrolls">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CutOffDate" Type="datetime" Nullable="false" />
+    <Property Name="GrossPay" Type="decimal" Nullable="false" />
+    <Property Name="NetPay" Type="decimal" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Allowances">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" />
+    <Property Name="PayrollId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Deductions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" />
+    <Property Name="PayrollId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Branches">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_UserRole">
+    <End Role="Roles" Type="BigCupPayrollModel.Store.Roles" Multiplicity="1" />
+    <End Role="Users" Type="BigCupPayrollModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserSalary">
+    <End Role="User" Type="BigCupPayrollModel.Store.Users" Multiplicity="1" />
+    <End Role="Salary" Type="BigCupPayrollModel.Store.Salaries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Salary">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserAttendance">
+    <End Role="User" Type="BigCupPayrollModel.Store.Users" Multiplicity="1" />
+    <End Role="Attendance" Type="BigCupPayrollModel.Store.Attendances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attendance">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PayrollAllowance">
+    <End Role="Payroll" Type="BigCupPayrollModel.Store.Payrolls" Multiplicity="1" />
+    <End Role="Allowance" Type="BigCupPayrollModel.Store.Allowances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payroll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Allowance">
+        <PropertyRef Name="PayrollId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PayrollDeduction">
+    <End Role="Payroll" Type="BigCupPayrollModel.Store.Payrolls" Multiplicity="1" />
+    <End Role="Deduction" Type="BigCupPayrollModel.Store.Deductions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payroll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deduction">
+        <PropertyRef Name="PayrollId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserPayroll">
+    <End Role="User" Type="BigCupPayrollModel.Store.Users" Multiplicity="1" />
+    <End Role="Payroll" Type="BigCupPayrollModel.Store.Payrolls" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payroll">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BranchUser">
+    <End Role="Branch" Type="BigCupPayrollModel.Store.Branches" Multiplicity="1" />
+    <End Role="User" Type="BigCupPayrollModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BigCupPayrollModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserRole" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeNo" Type="String" Nullable="true" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HiredDate" Type="DateTime" Nullable="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="true" />
+          <Property Name="Role_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_UserRole" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="Salaries" Relationship="BigCupPayrollModel.UserSalary" FromRole="User" ToRole="Salary" />
+          <NavigationProperty Name="Attendances" Relationship="BigCupPayrollModel.UserAttendance" FromRole="User" ToRole="Attendance" />
+          <NavigationProperty Name="Payrolls" Relationship="BigCupPayrollModel.UserPayroll" FromRole="User" ToRole="Payroll" />
+          <Property Name="Position" Type="String" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Nullable="true" />
+          <NavigationProperty Name="Branch" Relationship="BigCupPayrollModel.BranchUser" FromRole="User" ToRole="Branch" />
+          <Property Name="BranchId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="true" />
+        </EntityType>
+        <Association Name="FK_UserRole">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BigCupPayrollEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_UserRole" Association="Self.FK_UserRole">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Salaries" EntityType="BigCupPayrollModel.Salary" />
+          <AssociationSet Name="UserSalary" Association="BigCupPayrollModel.UserSalary">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Salary" EntitySet="Salaries" />
+          </AssociationSet>
+          <EntitySet Name="Attendances" EntityType="BigCupPayrollModel.Attendance" />
+          <AssociationSet Name="UserAttendance" Association="BigCupPayrollModel.UserAttendance">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Attendance" EntitySet="Attendances" />
+          </AssociationSet>
+          <EntitySet Name="Payrolls" EntityType="BigCupPayrollModel.Payroll" />
+          <EntitySet Name="Allowances" EntityType="BigCupPayrollModel.Allowance" />
+          <EntitySet Name="Deductions" EntityType="BigCupPayrollModel.Deduction" />
+          <AssociationSet Name="PayrollAllowance" Association="BigCupPayrollModel.PayrollAllowance">
+            <End Role="Payroll" EntitySet="Payrolls" />
+            <End Role="Allowance" EntitySet="Allowances" />
+          </AssociationSet>
+          <AssociationSet Name="PayrollDeduction" Association="BigCupPayrollModel.PayrollDeduction">
+            <End Role="Payroll" EntitySet="Payrolls" />
+            <End Role="Deduction" EntitySet="Deductions" />
+          </AssociationSet>
+          <AssociationSet Name="UserPayroll" Association="BigCupPayrollModel.UserPayroll">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Payroll" EntitySet="Payrolls" />
+          </AssociationSet>
+          <EntitySet Name="Branches" EntityType="BigCupPayrollModel.Branch" />
+          <AssociationSet Name="BranchUser" Association="BigCupPayrollModel.BranchUser">
+            <End Role="Branch" EntitySet="Branches" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Salary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BasicPay" Type="Decimal" Nullable="false" />
+          <Property Name="EffectiveDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="BigCupPayrollModel.UserSalary" FromRole="Salary" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserSalary">
+          <End Type="BigCupPayrollModel.User" Role="User" Multiplicity="1" />
+          <End Type="BigCupPayrollModel.Salary" Role="Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Salary">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeIn" Type="DateTime" Nullable="false" />
+          <Property Name="TimeOut" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" />
+          <Property Name="WorkDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="BigCupPayrollModel.UserAttendance" FromRole="Attendance" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserAttendance">
+          <End Type="BigCupPayrollModel.User" Role="User" Multiplicity="1" />
+          <End Type="BigCupPayrollModel.Attendance" Role="Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Payroll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CutOffDate" Type="DateTime" Nullable="false" />
+          <Property Name="GrossPay" Type="Decimal" Nullable="false" />
+          <Property Name="NetPay" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Allowances" Relationship="BigCupPayrollModel.PayrollAllowance" FromRole="Payroll" ToRole="Allowance" />
+          <NavigationProperty Name="Deductions" Relationship="BigCupPayrollModel.PayrollDeduction" FromRole="Payroll" ToRole="Deduction" />
+          <NavigationProperty Name="User" Relationship="BigCupPayrollModel.UserPayroll" FromRole="Payroll" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Allowance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Payroll" Relationship="BigCupPayrollModel.PayrollAllowance" FromRole="Allowance" ToRole="Payroll" />
+          <Property Name="PayrollId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deduction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Payroll" Relationship="BigCupPayrollModel.PayrollDeduction" FromRole="Deduction" ToRole="Payroll" />
+          <Property Name="PayrollId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PayrollAllowance">
+          <End Type="BigCupPayrollModel.Payroll" Role="Payroll" Multiplicity="1" />
+          <End Type="BigCupPayrollModel.Allowance" Role="Allowance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payroll">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Allowance">
+              <PropertyRef Name="PayrollId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PayrollDeduction">
+          <End Type="BigCupPayrollModel.Payroll" Role="Payroll" Multiplicity="1" />
+          <End Type="BigCupPayrollModel.Deduction" Role="Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payroll">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deduction">
+              <PropertyRef Name="PayrollId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserPayroll">
+          <End Type="BigCupPayrollModel.User" Role="User" Multiplicity="1" />
+          <End Type="BigCupPayrollModel.Payroll" Role="Payroll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payroll">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Location" Type="String" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="BigCupPayrollModel.BranchUser" FromRole="Branch" ToRole="User" />
+        </EntityType>
+        <Association Name="BranchUser">
+          <End Type="BigCupPayrollModel.Branch" Role="Branch" Multiplicity="1" />
+          <End Type="BigCupPayrollModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BigCupPayrollModelStoreContainer" CdmEntityContainer="BigCupPayrollEntities">
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Role)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="HiredDate" ColumnName="HiredDate" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salaries">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Salary)">
+        <MappingFragment StoreEntitySet="Salaries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BasicPay" ColumnName="BasicPay" />
+          <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendances">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Attendance)">
+        <MappingFragment StoreEntitySet="Attendances">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+          <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="WorkDate" ColumnName="WorkDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payrolls">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Payroll)">
+        <MappingFragment StoreEntitySet="Payrolls">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CutOffDate" ColumnName="CutOffDate" />
+          <ScalarProperty Name="GrossPay" ColumnName="GrossPay" />
+          <ScalarProperty Name="NetPay" ColumnName="NetPay" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Allowances">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Allowance)">
+        <MappingFragment StoreEntitySet="Allowances">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PayrollId" ColumnName="PayrollId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deductions">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Deduction)">
+        <MappingFragment StoreEntitySet="Deductions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PayrollId" ColumnName="PayrollId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="IsTypeOf(BigCupPayrollModel.Branch)">
+        <MappingFragment StoreEntitySet="Branches">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
